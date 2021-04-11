@@ -5,6 +5,9 @@ module.exports = {
   entry: {
     index: './src/index.jsx',
   },
+  resolve: {
+    extensions: ['.js', '.jsx'],
+  },
 
   module: {
     rules,

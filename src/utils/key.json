@@ -1,0 +1,97 @@
+[
+  {
+    "color": "btn-secondary",
+    "width": "85px",
+    "keyValue": "C"
+  },
+  {
+    "color": "btn-secondary",
+    "width": "85px",
+    "keyValue": "+/-"
+  },
+  {
+    "color": "btn-secondary",
+    "width": "85px",
+    "keyValue": "MOD"
+  },
+  {
+    "color": "btn-secondary",
+    "width": "85px",
+    "keyValue": "÷"
+  },
+  {
+    "color": "btn-primary",
+    "width": "85px",
+    "keyValue": 7
+  },
+  {
+    "color": "btn-primary",
+    "width": "85px",
+    "keyValue": 8
+  },
+  {
+    "color": "btn-primary",
+    "width": "85px",
+    "keyValue": 9
+  },
+  {
+    "color": "btn-tertiary",
+    "width": "85px",
+    "keyValue": "*"
+  },
+  {
+    "color": "btn-primary",
+    "width": "85px",
+    "keyValue": 4
+  },
+  {
+    "color": "btn-primary",
+    "width": "85px",
+    "keyValue": 5
+  },
+  {
+    "color": "btn-primary",
+    "width": "85px",
+    "keyValue": 6
+  },
+  {
+    "color": "btn-tertiary",
+    "width": "85px",
+    "keyValue": "-"
+  },
+  {
+    "color": "btn-primary",
+    "width": "85px",
+    "keyValue": 1
+  },
+  {
+    "color": "btn-primary",
+    "width": "85px",
+    "keyValue": 2
+  },
+  {
+    "color": "btn-primary",
+    "width": "85px",
+    "keyValue": 3
+  },
+  {
+    "color": "btn-tertiary",
+    "width": "85px",
+    "keyValue": "+"
+  },
+  {
+    "color": "btn-primary",
+    "width": "170px",
+    "keyValue": 0
+  },
+  {
+    "color": "btn-primary",
+    "width": "85px",
+    "keyValue": "."
+  },
+  {
+    "color": "btn-tertiary",
+    "width": "85px",
+    "keyValue": "="
+  }
+]

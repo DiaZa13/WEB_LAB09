@@ -1,0 +1,26 @@
+@import "./variables";
+@import "~bootstrap/scss/bootstrap";
+
+body{
+  background: #1d1e22;
+}
+
+.key{
+  --keyMinWidth: 50px;
+  border-radius: 0px;
+  width: var(--keyMinWidth);
+  height: 85px;
+  font-size: 35px;
+}
+
+.display{
+  width: 100%;
+  height: 125px;
+}
+
+.calculator{
+  border-radius: 10px;
+  height: 550px;
+  width: 340px;
+}
+
