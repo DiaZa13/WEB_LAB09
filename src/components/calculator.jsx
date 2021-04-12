@@ -28,9 +28,7 @@ function Calculator() {
 
   // Make an operation
   const operate = () => {
-    console.log('entrando');
     if (numbers.second !== '') {
-      console.log('Entra?');
       // Check if the numbers are negative and parse them into float
       let first;
       let second;
@@ -162,7 +160,7 @@ function Calculator() {
           first: numbers.first + key.keyValue.toString(),
         });
         setDisplay(display + key.keyValue.toString());
-      } else if (display === numbers.first){
+      } else if (display === numbers.first) {
         setNumbers({
           ...numbers,
           second: numbers.second + key.keyValue.toString(),
