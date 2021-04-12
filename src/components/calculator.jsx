@@ -31,6 +31,8 @@ function Calculator() {
   // Save the result of the operations
   const [result, setResult] = useState(0);
 
+  const [recursiveOperation, setRecursiveOperation] = useState(0);
+
   // Make an operation
   const operate = () => {
     // Check if the numbers are negative and parse them into float
@@ -49,9 +51,13 @@ function Calculator() {
     if (operations.multiplication) {
       value = (first * second).toFixed(3);
     } else if (operations.addition) {
-      value = (first + second).toFixed(3);
+      console.log('testing');
+      console.log(first);
+      console.log(second);
+      value = (first + second);
+      console.log(value);
     } else if (operations.subtraction) {
-      value = (first - second).toFixed(3);
+      value = (first - second);
     } else if (operations.division) {
       value = (first / second).toFixed(3);
     } else if (operations.module) {
@@ -61,6 +67,10 @@ function Calculator() {
     // Check if the result is less than 9 digits or less than 999999999
     if (value <= 999999999 && value.toString().length < 9) {
       setResult(value);
+      setNumbers({
+        first: value.toString(),
+        second: '',
+      });
       setResult((state) => {
         if (!plusMinus && state < 0) {
           setDisplay('ERROR');
@@ -69,7 +79,7 @@ function Calculator() {
         }
       });
     } else {
-      setDisplay('ERROR');
+      setDisplay(numbers.first);
     }
   };
 
@@ -89,7 +99,6 @@ function Calculator() {
         module: false,
         plus_minus: false,
       });
-
       setDisplay('');
       setResult(0);
     } else if (key.keyValue === '*') {
@@ -101,6 +110,7 @@ function Calculator() {
         division: false,
         module: false,
       });
+      setRecursiveOperation(recursiveOperation + 1);
       setDisplay('');
       setResult(0);
     } else if (key.keyValue === '+') {
@@ -112,6 +122,7 @@ function Calculator() {
         division: false,
         module: false,
       });
+      setRecursiveOperation(recursiveOperation + 1);
       setDisplay('');
       setResult(0);
     } else if (key.keyValue === '-') {
@@ -123,6 +134,7 @@ function Calculator() {
         division: false,
         module: false,
       });
+      setRecursiveOperation(recursiveOperation + 1);
       setDisplay('');
       setResult(0);
     } else if (key.keyValue === '÷') {
@@ -134,6 +146,7 @@ function Calculator() {
         subtraction: false,
         module: false,
       });
+      setRecursiveOperation(recursiveOperation + 1);
       setDisplay('');
       setResult(0);
     } else if (key.keyValue === 'MOD') {
@@ -145,10 +158,10 @@ function Calculator() {
         multiplication: false,
         subtraction: false,
       });
+      setRecursiveOperation(recursiveOperation + 1);
       setDisplay('');
       setResult(0);
     } else if (key.keyValue === '=') {
-      console.log('testing');
       operate();
     } else if (display.length < 9) {
       // eslint-disable-next-line max-len
@@ -159,6 +172,7 @@ function Calculator() {
         });
         setDisplay(display + key.keyValue.toString());
       } else {
+        console.log('Deberia entrar aqui');
         setNumbers({
           ...numbers,
           second: numbers.second + key.keyValue.toString(),
