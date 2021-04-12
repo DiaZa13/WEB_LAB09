@@ -15,7 +15,7 @@
     "keyValue": "MOD"
   },
   {
-    "color": "btn-secondary",
+    "color": "btn-tertiary",
     "width": "85px",
     "keyValue": "÷"
   },
@@ -90,7 +90,7 @@
     "keyValue": "."
   },
   {
-    "color": "btn-tertiary",
+    "color": "btn-dark",
     "width": "85px",
     "keyValue": "="
   }

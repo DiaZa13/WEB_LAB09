@@ -16,7 +16,7 @@ function Keyboard(props) {
               color={key.color}
               width={key.width}
               keyValue={key.keyValue}
-              displayChange={() => prop.displayChange(key.keyValue)}
+              calculate={() => prop.calculate(key)}
             />
           );
         })
