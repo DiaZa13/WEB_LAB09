@@ -28,48 +28,54 @@ function Calculator() {
 
   // Make an operation
   const operate = () => {
-    // Check if the numbers are negative and parse them into float
-    let first;
-    let second;
-    let value;
-    if (negative.first) {
-      first = -parseFloat(numbers.first);
-    } else if (negative.second) {
-      second = -parseFloat(numbers.second);
-    } else {
-      first = parseFloat(numbers.first);
-      second = parseFloat(numbers.second);
-    }
-    // Operate the numbers
-    if (operations.multiplication) {
-      value = (first * second).toFixed(3);
-    } else if (operations.addition) {
-      console.log('testing');
-      console.log(first);
-      console.log(second);
-      value = (first + second);
-      console.log(value);
-    } else if (operations.subtraction) {
-      value = (first - second);
-    } else if (operations.division) {
-      value = (first / second).toFixed(3);
-    } else if (operations.module) {
-      value = (first % second).toFixed(3);
-    }
-
-    // Check if the result is less than 9 digits or less than 999999999
-    if (value <= 999999999 && value.toString().length < 9) {
-      setNumbers({
-        first: value.toString(),
-        second: '',
-      });
-      if (!plusMinus && value < 0) {
-        setDisplay('ERROR');
+    console.log('entrando');
+    if (numbers.second !== '') {
+      console.log('Entra?');
+      // Check if the numbers are negative and parse them into float
+      let first;
+      let second;
+      let value;
+      if (negative.first) {
+        first = -parseFloat(numbers.first);
+      } else if (negative.second) {
+        second = -parseFloat(numbers.second);
       } else {
-        setDisplay(value.toString());
+        first = parseFloat(numbers.first);
+        second = parseFloat(numbers.second);
+      }
+      // Operate the numbers
+      if (operations.multiplication) {
+        value = (first * second).toFixed(3);
+      } else if (operations.addition) {
+        console.log('testing');
+        console.log(first);
+        console.log(second);
+        value = (first + second);
+        console.log(value);
+      } else if (operations.subtraction) {
+        value = (first - second);
+      } else if (operations.division) {
+        value = (first / second).toFixed(3);
+      } else if (operations.module) {
+        value = (first % second).toFixed(3);
+      }
+
+      // Check if the result is less than 9 digits or less than 999999999
+      if (value <= 999999999 && value.toString().length < 9) {
+        setNumbers({
+          first: value.toString(),
+          second: '',
+        });
+        if (!plusMinus && value < 0) {
+          setDisplay('ERROR');
+        } else {
+          setDisplay(value.toString());
+        }
+      } else {
+        console.log('ERROR');
       }
     } else {
-      setDisplay(numbers.first);
+      setDisplay('');
     }
   };
 
@@ -100,6 +106,7 @@ function Calculator() {
         module: false,
       });
       setDisplay('');
+      operate();
     } else if (key.keyValue === '+') {
       setOperations({
         ...operations,
@@ -110,6 +117,8 @@ function Calculator() {
         module: false,
       });
       setDisplay('');
+      operate();
+      console.log(numbers.second);
     } else if (key.keyValue === '-') {
       setOperations({
         ...operations,
@@ -120,6 +129,7 @@ function Calculator() {
         module: false,
       });
       setDisplay('');
+      operate();
     } else if (key.keyValue === '÷') {
       setOperations({
         ...operations,
@@ -130,6 +140,7 @@ function Calculator() {
         module: false,
       });
       setDisplay('');
+      operate();
     } else if (key.keyValue === 'MOD') {
       setOperations({
         ...operations,
@@ -140,6 +151,7 @@ function Calculator() {
         subtraction: false,
       });
       setDisplay('');
+      operate();
     } else if (key.keyValue === '=') {
       operate();
     } else if (display.length < 9) {
@@ -150,8 +162,13 @@ function Calculator() {
           first: numbers.first + key.keyValue.toString(),
         });
         setDisplay(display + key.keyValue.toString());
+      } else if (display === numbers.first){
+        setNumbers({
+          ...numbers,
+          second: numbers.second + key.keyValue.toString(),
+        });
+        setDisplay(key.keyValue.toString());
       } else {
-        console.log('Deberia entrar aqui');
         setNumbers({
           ...numbers,
           second: numbers.second + key.keyValue.toString(),
