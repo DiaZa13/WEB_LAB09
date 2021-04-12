@@ -9,7 +9,10 @@ function Display(props) {
           CALCULATOR
         </h4>
       </div>
-      <div className="d-flex justify-content-end  bg-display" style={{ height: '85px' }}>
+      <div className="d-flex flex-column  bg-display" style={{ height: '85px' }}>
+        <p className="align-self-end mr-4 mt-2 mb-1 font-weight-normal text-light">
+          {display.accumulate}
+        </p>
         <h1 className="align-self-end mr-4 font-weight-normal">
           {display.value}
         </h1>

@@ -11,27 +11,20 @@ function Calculator() {
     division: false,
     module: false,
   });
-
   // Save the numbers to use in the operation
   const [numbers, setNumbers] = useState({
     first: '',
     second: '',
   });
-
   // Defines if a number is negative
   const [negative, setNegative] = useState({
     first: false,
     second: false,
   });
-
   // Convert a number into a negative number
   const [plusMinus, setPlusMinus] = useState(false);
   // Defines the data to display
   const [display, setDisplay] = useState('');
-  // Save the result of the operations
-  const [result, setResult] = useState(0);
-
-  const [recursiveOperation, setRecursiveOperation] = useState(0);
 
   // Make an operation
   const operate = () => {
@@ -66,18 +59,15 @@ function Calculator() {
 
     // Check if the result is less than 9 digits or less than 999999999
     if (value <= 999999999 && value.toString().length < 9) {
-      setResult(value);
       setNumbers({
         first: value.toString(),
         second: '',
       });
-      setResult((state) => {
-        if (!plusMinus && state < 0) {
-          setDisplay('ERROR');
-        } else {
-          setDisplay(state.toString());
-        }
-      });
+      if (!plusMinus && value < 0) {
+        setDisplay('ERROR');
+      } else {
+        setDisplay(value.toString());
+      }
     } else {
       setDisplay(numbers.first);
     }
@@ -100,7 +90,6 @@ function Calculator() {
         plus_minus: false,
       });
       setDisplay('');
-      setResult(0);
     } else if (key.keyValue === '*') {
       setOperations({
         ...operations,
@@ -110,9 +99,7 @@ function Calculator() {
         division: false,
         module: false,
       });
-      setRecursiveOperation(recursiveOperation + 1);
       setDisplay('');
-      setResult(0);
     } else if (key.keyValue === '+') {
       setOperations({
         ...operations,
@@ -122,9 +109,7 @@ function Calculator() {
         division: false,
         module: false,
       });
-      setRecursiveOperation(recursiveOperation + 1);
       setDisplay('');
-      setResult(0);
     } else if (key.keyValue === '-') {
       setOperations({
         ...operations,
@@ -134,9 +119,7 @@ function Calculator() {
         division: false,
         module: false,
       });
-      setRecursiveOperation(recursiveOperation + 1);
       setDisplay('');
-      setResult(0);
     } else if (key.keyValue === '÷') {
       setOperations({
         ...operations,
@@ -146,9 +129,7 @@ function Calculator() {
         subtraction: false,
         module: false,
       });
-      setRecursiveOperation(recursiveOperation + 1);
       setDisplay('');
-      setResult(0);
     } else if (key.keyValue === 'MOD') {
       setOperations({
         ...operations,
@@ -158,9 +139,7 @@ function Calculator() {
         multiplication: false,
         subtraction: false,
       });
-      setRecursiveOperation(recursiveOperation + 1);
       setDisplay('');
-      setResult(0);
     } else if (key.keyValue === '=') {
       operate();
     } else if (display.length < 9) {
@@ -200,6 +179,7 @@ function Calculator() {
       <div className="d-flex flex-row flex-wrap calculator">
         <Display
           value={display}
+          accumulate={numbers.first}
         />
         <Keyboard
           calculate={(key) => { calculate(key); }}
