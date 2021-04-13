@@ -6,7 +6,7 @@ function Keyboard(props) {
   const prop = props;
   const keys = Key;
   return (
-    <div className="d-flex flex-wrap">
+    <div className="row row-cols-4 m-0">
       {
         keys.map((key) => {
           const index = keys.indexOf(key);

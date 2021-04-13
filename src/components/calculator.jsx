@@ -65,6 +65,11 @@ function Calculator() {
         });
         if (!plusMinus && value < 0) {
           setDisplay('ERROR');
+          setNumbers({
+            ...numbers,
+            first: '',
+            second: '',
+          });
         } else {
           setDisplay(value.toString());
         }
@@ -114,8 +119,17 @@ function Calculator() {
         module: false,
       });
       setDisplay('');
+      if (numbers.first === '') {
+        setNumbers({
+          ...numbers,
+          first: '0',
+        });
+        setDisplay('0');
+        setDisplay((state) => {
+          setDisplay(state);
+        });
+      }
       operate();
-      console.log(numbers.second);
     } else if (key.keyValue === '-') {
       setOperations({
         ...operations,
@@ -126,6 +140,16 @@ function Calculator() {
         module: false,
       });
       setDisplay('');
+      if (numbers.first === '') {
+        setNumbers({
+          ...numbers,
+          first: '0',
+        });
+        setDisplay('0');
+        setDisplay((state) => {
+          setDisplay(state);
+        });
+      }
       operate();
     } else if (key.keyValue === '÷') {
       setOperations({
@@ -137,6 +161,16 @@ function Calculator() {
         module: false,
       });
       setDisplay('');
+      if (numbers.first === '') {
+        setNumbers({
+          ...numbers,
+          first: '0',
+        });
+        setDisplay('0');
+        setDisplay((state) => {
+          setDisplay(state);
+        });
+      }
       operate();
     } else if (key.keyValue === 'MOD') {
       setOperations({
@@ -148,6 +182,16 @@ function Calculator() {
         subtraction: false,
       });
       setDisplay('');
+      if (numbers.first === '') {
+        setNumbers({
+          ...numbers,
+          first: '0',
+        });
+        setDisplay('0');
+        setDisplay((state) => {
+          setDisplay(state);
+        });
+      }
       operate();
     } else if (key.keyValue === '=') {
       operate();
@@ -160,6 +204,7 @@ function Calculator() {
         });
         setDisplay(display + key.keyValue.toString());
       } else if (display === numbers.first) {
+        console.log('aqui');
         setNumbers({
           ...numbers,
           second: numbers.second + key.keyValue.toString(),
@@ -189,7 +234,7 @@ function Calculator() {
   };
 
   return (
-    <div className="container-fluid mt-4">
+    <div className="container-fluid">
       <div className="d-flex flex-row flex-wrap calculator">
         <Display
           value={display}

@@ -4,12 +4,12 @@ function Display(props) {
   const display = props;
   return (
     <div className="d-flex flex-column display">
-      <div className="bg-dark" style={{ height: '40px', borderTopLeftRadius: '5px', borderTopRightRadius: '5px' }}>
+      <div className="bg-dark h-25" style={{ borderTopLeftRadius: '5px', borderTopRightRadius: '5px' }}>
         <h4 className="ml-3 mt-1 font-weight-bold">
           CALCULATOR
         </h4>
       </div>
-      <div className="d-flex flex-column  bg-display" style={{ height: '85px' }}>
+      <div className="d-flex flex-column bg-display h-75 justify-content-flex-end">
         <p className="align-self-end mr-4 mt-2 mb-1 font-weight-normal text-light">
           {display.accumulate}
         </p>
