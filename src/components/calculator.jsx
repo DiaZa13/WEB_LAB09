@@ -43,21 +43,20 @@ function Calculator() {
       }
       // Operate the numbers
       if (operations.multiplication) {
-        value = (first * second).toFixed(3);
+        value = (first * second);
       } else if (operations.addition) {
-        console.log('testing');
-        console.log(first);
-        console.log(second);
         value = (first + second);
-        console.log(value);
       } else if (operations.subtraction) {
         value = (first - second);
       } else if (operations.division) {
-        value = (first / second).toFixed(3);
+        value = (first / second);
       } else if (operations.module) {
-        value = (first % second).toFixed(3);
+        value = (first % second);
       }
-
+      const decimal = value % 1;
+      if (decimal > 0) {
+        value = value.toFixed(2);
+      }
       // Check if the result is less than 9 digits or less than 999999999
       if (value <= 999999999 && value.toString().length < 9) {
         setNumbers({
