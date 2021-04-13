@@ -262,51 +262,51 @@ function Calculator() {
             setDisplay(display.replace('-', ''));
           }
         });
+      } else if (key.keyValue !== '+/-') {
         // eslint-disable-next-line max-len
-      } else if (!operations.addition && !operations.division && !operations.multiplication && !operations.subtraction && !operations.module) {
-        if (numbers.first === '0' && display === '0' && key.keyValue !== '+/-') {
-          console.log('wtf1');
-          if (key.keyValue === '.') {
+        if (!operations.addition && !operations.division && !operations.multiplication && !operations.subtraction && !operations.module) {
+          if (numbers.first === '0' && display === '0') {
+            if (key.keyValue === '.') {
+              setNumbers({
+                ...numbers,
+                first: numbers.first + key.keyValue.toString(),
+              });
+              setDisplay(display + key.keyValue.toString());
+            } else {
+              setNumbers({
+                ...numbers,
+                first: key.keyValue.toString(),
+              });
+              setDisplay(key.keyValue.toString());
+            }
+          } else {
             console.log('wtf1.2');
             setNumbers({
               ...numbers,
               first: numbers.first + key.keyValue.toString(),
             });
             setDisplay(display + key.keyValue.toString());
-          } else {
-            setNumbers({
-              ...numbers,
-              first: key.keyValue.toString(),
-            });
-            setDisplay(key.keyValue.toString());
           }
-        } else {
-          console.log('wtf1.2');
+        } else if (display === numbers.first) {
           setNumbers({
             ...numbers,
-            first: numbers.first + key.keyValue.toString(),
+            second: numbers.second + key.keyValue.toString(),
+          });
+          setDisplay(key.keyValue.toString());
+        } else if (display === 'ERROR') {
+          setNumbers({
+            ...numbers,
+            first: key.keyValue.toString(),
+          });
+          setDisplay(key.keyValue.toString());
+        } else {
+          console.log('wtf2');
+          setNumbers({
+            ...numbers,
+            second: numbers.second + key.keyValue.toString(),
           });
           setDisplay(display + key.keyValue.toString());
         }
-      } else if (display === numbers.first && key.keyValue !== '+/-') {
-        setNumbers({
-          ...numbers,
-          second: numbers.second + key.keyValue.toString(),
-        });
-        setDisplay(key.keyValue.toString());
-      } else if (display === 'ERROR') {
-        setNumbers({
-          ...numbers,
-          first: key.keyValue.toString(),
-        });
-        setDisplay(key.keyValue.toString());
-      } else {
-        console.log('wtf2');
-        setNumbers({
-          ...numbers,
-          second: numbers.second + key.keyValue.toString(),
-        });
-        setDisplay(display + key.keyValue.toString());
       }
     }
   };
