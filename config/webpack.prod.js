@@ -14,11 +14,10 @@ module.exports = {
     new CleanWebpackPlugin(),
 
   ],
-
   module: {
     rules: [
       {
-        test: /\.s[ac]ss$/,
+        test: /\.scss$/,
         use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader'],
       },
     ],
