@@ -81,17 +81,17 @@
   },
   {
     "color": "btn-primary",
-    "width": "170px",
+    "width": "50%",
     "keyValue": 0
   },
   {
     "color": "btn-primary",
-    "width": "85px",
+    "width": "25%",
     "keyValue": "."
   },
   {
     "color": "btn-dark",
-    "width": "85px",
+    "width": "25%",
     "keyValue": "="
   }
 ]

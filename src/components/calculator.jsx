@@ -13,7 +13,7 @@ function Calculator() {
   });
   // Save the numbers to use in the operation
   const [numbers, setNumbers] = useState({
-    first: '',
+    first: '0',
     second: '',
   });
   // Defines if a number is negative
@@ -24,10 +24,15 @@ function Calculator() {
   // Convert a number into a negative number
   const [plusMinus, setPlusMinus] = useState(false);
   // Defines the data to display
-  const [display, setDisplay] = useState('');
+  const [display, setDisplay] = useState('0');
 
   // Make an operation
   const operate = () => {
+    console.log('Starts testing');
+    console.log(negative.first);
+    console.log(negative.second);
+    console.log(numbers.first);
+    console.log(numbers.second);
     if (numbers.second !== '') {
       // Check if the numbers are negative and parse them into float
       let first;
@@ -35,7 +40,9 @@ function Calculator() {
       let value;
       if (negative.first) {
         first = -parseFloat(numbers.first);
+        second = parseFloat(numbers.second);
       } else if (negative.second) {
+        first = parseFloat(numbers.first);
         second = -parseFloat(numbers.second);
       } else {
         first = parseFloat(numbers.first);
@@ -45,6 +52,9 @@ function Calculator() {
       if (operations.multiplication) {
         value = (first * second);
       } else if (operations.addition) {
+        console.log('convertidos');
+        console.log(first);
+        console.log(second);
         value = (first + second);
       } else if (operations.subtraction) {
         value = (first - second);
@@ -76,16 +86,44 @@ function Calculator() {
       } else {
         console.log('ERROR');
       }
+    } else if (negative.first) {
+      const firstN = -parseFloat(numbers.first);
+      setNumbers({
+        first: firstN,
+        second: '',
+      });
+    } else if (negative.second) {
+      const secondN = -parseFloat(numbers.second);
+      setNumbers({
+        ...numbers,
+        second: secondN,
+      });
+    } else if (!negative.first) {
+      const firstN = Math.abs(parseFloat(numbers.first));
+      setNumbers({
+        ...numbers,
+        first: firstN,
+      });
+    } else if (!negative.second) {
+      const secondN = parseFloat(numbers.second);
+      setNumbers({
+        ...numbers,
+        second: secondN,
+      });
     } else {
       setDisplay('');
     }
+    setNegative({
+      first: false,
+      second: false,
+    });
   };
 
   const calculate = (key) => {
     if (key.keyValue === 'C') {
       setNumbers({
         ...numbers,
-        first: '',
+        first: '0',
         second: '',
       });
       setOperations({
@@ -97,7 +135,7 @@ function Calculator() {
         module: false,
         plus_minus: false,
       });
-      setDisplay('');
+      setDisplay('0');
     } else if (key.keyValue === '*') {
       setOperations({
         ...operations,
@@ -196,39 +234,56 @@ function Calculator() {
     } else if (key.keyValue === '=') {
       operate();
     } else if (display.length < 9) {
-      // eslint-disable-next-line max-len
-      if (!operations.addition && !operations.division && !operations.multiplication && !operations.subtraction && !operations.module) {
-        setNumbers({
-          ...numbers,
-          first: numbers.first + key.keyValue.toString(),
+      if (key.keyValue === '+/-' && numbers.first !== '0' && display !== '0') {
+        console.log('wtf');
+        setPlusMinus(!plusMinus);
+        setPlusMinus((state) => {
+          if (state) {
+            setPlusMinus(state);
+            if (display === numbers.first) {
+              setNegative({
+                first: true,
+                second: false,
+              });
+            } else {
+              setNegative({
+                second: true,
+                first: false,
+              });
+            }
+            setDisplay(`-${display}`);
+          } else {
+            console.log('wtf1');
+            setPlusMinus(state);
+            setNegative({
+              first: false,
+              second: false,
+            });
+            setDisplay(display.replace('-', ''));
+          }
         });
-        setDisplay(display + key.keyValue.toString());
-      } else if (display === numbers.first) {
-        console.log('aqui');
+        // eslint-disable-next-line max-len
+      } else if (!operations.addition && !operations.division && !operations.multiplication && !operations.subtraction && !operations.module) {
+        if (numbers.first === '0' && display === '0' && key.keyValue !== '+/-') {
+          setNumbers({
+            ...numbers,
+            first: key.keyValue.toString(),
+          });
+          setDisplay(key.keyValue.toString());
+        }
+      } else if (display === numbers.first && key.keyValue !== '+/-') {
         setNumbers({
           ...numbers,
           second: numbers.second + key.keyValue.toString(),
         });
         setDisplay(key.keyValue.toString());
       } else {
+        console.log('wtf2');
         setNumbers({
           ...numbers,
           second: numbers.second + key.keyValue.toString(),
         });
         setDisplay(display + key.keyValue.toString());
-      }
-      if (key.keyValue === '+/-') {
-        setPlusMinus(!plusMinus);
-        if (display === numbers.first) {
-          setNegative({
-            first: true,
-          });
-        } else {
-          setNegative({
-            second: true,
-          });
-        }
-        setDisplay(`-${display}`);
       }
     }
   };
@@ -237,6 +292,13 @@ function Calculator() {
     <div className="container-fluid">
       <div className="d-flex flex-row flex-wrap calculator">
         <Display
+          operacion={
+            operations.addition ? 'Suma'
+              : operations.subtraction ? 'Resta'
+                : operations.multiplication ? 'Multiplicación'
+                  : operations.division ? 'División'
+                    : operations.module ? 'MOD' : 'Operación'
+          }
           value={display}
           accumulate={numbers.first}
         />
