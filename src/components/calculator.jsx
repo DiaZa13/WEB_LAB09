@@ -265,11 +265,28 @@ function Calculator() {
         // eslint-disable-next-line max-len
       } else if (!operations.addition && !operations.division && !operations.multiplication && !operations.subtraction && !operations.module) {
         if (numbers.first === '0' && display === '0' && key.keyValue !== '+/-') {
+          console.log('wtf1');
+          if (key.keyValue === '.') {
+            console.log('wtf1.2');
+            setNumbers({
+              ...numbers,
+              first: numbers.first + key.keyValue.toString(),
+            });
+            setDisplay(display + key.keyValue.toString());
+          } else {
+            setNumbers({
+              ...numbers,
+              first: key.keyValue.toString(),
+            });
+            setDisplay(key.keyValue.toString());
+          }
+        } else {
+          console.log('wtf1.2');
           setNumbers({
             ...numbers,
-            first: key.keyValue.toString(),
+            first: numbers.first + key.keyValue.toString(),
           });
-          setDisplay(key.keyValue.toString());
+          setDisplay(display + key.keyValue.toString());
         }
       } else if (display === numbers.first && key.keyValue !== '+/-') {
         setNumbers({
