@@ -294,6 +294,12 @@ function Calculator() {
           second: numbers.second + key.keyValue.toString(),
         });
         setDisplay(key.keyValue.toString());
+      } else if (display === 'ERROR') {
+        setNumbers({
+          ...numbers,
+          first: key.keyValue.toString(),
+        });
+        setDisplay(key.keyValue.toString());
       } else {
         console.log('wtf2');
         setNumbers({
@@ -309,6 +315,9 @@ function Calculator() {
     <div className="container-fluid">
       <div className="d-flex flex-row flex-wrap calculator">
         <Display
+          pminus={
+            plusMinus ? 'on' : 'off'
+          }
           operacion={
             operations.addition ? 'Suma'
               : operations.subtraction ? 'Resta'

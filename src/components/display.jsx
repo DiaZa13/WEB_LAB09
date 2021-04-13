@@ -5,10 +5,13 @@ function Display(props) {
   return (
     <div className="d-flex flex-column display">
       <div className="bg-dark h-25 d-flex justify-content-between align-items-center" style={{ borderTopLeftRadius: '5px', borderTopRightRadius: '5px' }}>
-        <h3 className="ml-3 mt-1 font-weight-bold">
+        <h3 className="ml-4 font-weight-bold">
+          {`Negativos: ${display.pminus}`}
+        </h3>
+        <h3 className="font-weight-bold">
           CALCULATOR
         </h3>
-        <h3 className="mr-4 mt-1 font-weight-bold">
+        <h3 className="mr-4 font-weight-bold">
           {display.operacion}
         </h3>
       </div>
