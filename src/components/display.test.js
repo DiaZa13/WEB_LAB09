@@ -6,14 +6,18 @@ import '@testing-library/jest-dom';
 import Display from './display';
 
 describe('Display', () => {
-  let negative
-  beforeAll(() => {
-    render(<Display />);
-    negative = screen.getByTestId('negative');
-    console.log(negative);
-  });
-});
+  let props = {
+    pminus: true
+  }
 
-it('Primer test', function () {
-  expect(negative).toBeDefined()
+  it('Negative numbers on', function () {
+    render(<Display pminus={props.pminus} />);
+    let negative;
+    negative = screen.queryByTestId("negative");
+    screen.debug();
+    expect(negative).not.toBeNull();
+    expect(screen.getByText('Negativos: on')).toBeInTheDocument();
+  });
+
+
 });

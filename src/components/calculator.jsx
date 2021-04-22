@@ -315,9 +315,7 @@ function Calculator() {
     <div className="container-fluid">
       <div className="d-flex flex-row flex-wrap calculator">
         <Display
-          pminus={
-            plusMinus ? 'on' : 'off'
-          }
+          pminus={ plusMinus }
           operacion={
             operations.addition ? 'Suma'
               : operations.subtraction ? 'Resta'

@@ -4,9 +4,9 @@ function Display(props) {
   const display = props;
   return (
     <div className="d-flex flex-column display">
-      <div data-testid="negative" className="bg-dark h-25 d-flex justify-content-between align-items-center" style={{ borderTopLeftRadius: '5px', borderTopRightRadius: '5px' }}>
-        <h3 className="ml-4 font-weight-bold">
-          {`Negativos: ${display.pminus}`}
+      <div className="bg-dark h-25 d-flex justify-content-between align-items-center" style={{ borderTopLeftRadius: '5px', borderTopRightRadius: '5px' }}>
+        <h3 data-testid="negative" className="ml-4 font-weight-bold">
+          {`Negativos: ${display.pminus? 'on' : 'off'}`}
         </h3>
         <h3 className="font-weight-bold">
           CALCULATOR
