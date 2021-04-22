@@ -4,7 +4,7 @@ function Display(props) {
   const display = props;
   return (
     <div className="d-flex flex-column display">
-      <div className="bg-dark h-25 d-flex justify-content-between align-items-center" style={{ borderTopLeftRadius: '5px', borderTopRightRadius: '5px' }}>
+      <div data-testid="negative" className="bg-dark h-25 d-flex justify-content-between align-items-center" style={{ borderTopLeftRadius: '5px', borderTopRightRadius: '5px' }}>
         <h3 className="ml-4 font-weight-bold">
           {`Negativos: ${display.pminus}`}
         </h3>
