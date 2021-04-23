@@ -330,6 +330,7 @@ function Calculator() {
           calculate={(key) => { calculate(key); }}
         />
       </div>
+      <div data-testid="hooks">{numbers.first}</div>
 
     </div>
   );

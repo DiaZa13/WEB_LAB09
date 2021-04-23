@@ -2,96 +2,115 @@
   {
     "color": "btn-secondary",
     "width": "85px",
-    "keyValue": "C"
+    "keyValue": "C",
+    "test": "undo"
   },
   {
     "color": "btn-secondary",
     "width": "85px",
-    "keyValue": "+/-"
+    "keyValue": "+/-",
+    "test": "plus_minus"
   },
   {
     "color": "btn-secondary",
     "width": "85px",
-    "keyValue": "MOD"
+    "keyValue": "MOD",
+    "test": "mod"
   },
   {
     "color": "btn-tertiary",
     "width": "85px",
-    "keyValue": "÷"
+    "keyValue": "÷",
+    "test": "division"
   },
   {
     "color": "btn-primary",
     "width": "85px",
-    "keyValue": 7
+    "keyValue": 7,
+    "test": "seven"
   },
   {
     "color": "btn-primary",
     "width": "85px",
-    "keyValue": 8
+    "keyValue": 8,
+    "test": "eight"
   },
   {
     "color": "btn-primary",
     "width": "85px",
-    "keyValue": 9
+    "keyValue": 9,
+    "test": "nine"
   },
   {
     "color": "btn-tertiary",
     "width": "85px",
-    "keyValue": "*"
+    "keyValue": "*",
+    "test": "product"
   },
   {
     "color": "btn-primary",
     "width": "85px",
-    "keyValue": 4
+    "keyValue": 4,
+    "test": "four"
   },
   {
     "color": "btn-primary",
     "width": "85px",
-    "keyValue": 5
+    "keyValue": 5,
+    "test": "five"
   },
   {
     "color": "btn-primary",
     "width": "85px",
-    "keyValue": 6
+    "keyValue": 6,
+    "test": "six"
   },
   {
     "color": "btn-tertiary",
     "width": "85px",
-    "keyValue": "-"
+    "keyValue": "-",
+    "test": "minus"
   },
   {
     "color": "btn-primary",
     "width": "85px",
-    "keyValue": 1
+    "keyValue": 1,
+    "test": "one"
   },
   {
     "color": "btn-primary",
     "width": "85px",
-    "keyValue": 2
+    "keyValue": 2,
+    "test": "two"
   },
   {
     "color": "btn-primary",
     "width": "85px",
-    "keyValue": 3
+    "keyValue": 3,
+    "test": "three"
   },
   {
     "color": "btn-tertiary",
     "width": "85px",
-    "keyValue": "+"
+    "keyValue": "+",
+    "test": "plus"
   },
   {
     "color": "btn-primary",
     "width": "50%",
-    "keyValue": 0
+    "keyValue": 0,
+    "test": "zero"
   },
   {
     "color": "btn-primary",
     "width": "25%",
-    "keyValue": "."
+    "keyValue": ".",
+    "test": "point"
   },
   {
     "color": "btn-dark",
     "width": "25%",
-    "keyValue": "="
+    "keyValue": "=",
+    "test": "equals"
   }
 ]

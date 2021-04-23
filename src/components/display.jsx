@@ -8,10 +8,10 @@ function Display(props) {
         <h3 data-testid="negative" className="ml-4 font-weight-bold">
           {`Negativos: ${display.pminus? 'on' : 'off'}`}
         </h3>
-        <h3 className="font-weight-bold">
+        <h3  className="font-weight-bold">
           CALCULATOR
         </h3>
-        <h3 className="mr-4 font-weight-bold">
+        <h3 data-testid="operation" className="mr-4 font-weight-bold">
           {display.operacion}
         </h3>
       </div>
@@ -19,7 +19,7 @@ function Display(props) {
         <h4 className="align-self-end mr-4 mt-2 mb-1 font-weight-normal text-light">
           {display.accumulate}
         </h4>
-        <h1 className="align-self-end mr-4 font-weight-normal">
+        <h1 data-testid="display" className="align-self-end mr-4 font-weight-normal">
           {display.value}
         </h1>
       </div>

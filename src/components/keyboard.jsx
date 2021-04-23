@@ -15,6 +15,7 @@ function Keyboard(props) {
               return (
                 <KeyItem
                   key={index}
+                  testid={key.test}
                   color={key.color}
                   width={key.width}
                   keyValue={key.keyValue}
@@ -33,6 +34,7 @@ function Keyboard(props) {
               return (
                 <KeyItem
                   key={index}
+                  testid={key.test}
                   color={key.color}
                   width={key.width}
                   keyValue={key.keyValue}
